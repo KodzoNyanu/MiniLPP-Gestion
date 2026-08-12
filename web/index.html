@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr-CH">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniLPP — gestion de prévoyance professionnelle</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>MiniLPP</h1>
+    <p class="sous-titre">Projet fil rouge — application de gestion de caisse de pension</p>
+  </header>
+
+  <main>
+    <section class="panneau">
+      <h2>Assurés</h2>
+      <label for="recherche">Rechercher</label>
+      <input id="recherche" type="search" placeholder="nom ou prénom" autocomplete="off">
+      <table id="tableau-assures">
+        <thead>
+          <tr>
+            <th data-tri="nom">Nom</th>
+            <th data-tri="prenom">Prénom</th>
+            <th data-tri="age" class="num">Âge</th>
+            <th data-tri="tauxActivite" class="num">Taux</th>
+            <th data-tri="salaireAnnuelBrut" class="num">Salaire brut</th>
+            <th data-tri="salaireCoordonne" class="num">Salaire coordonné</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p id="etat" class="etat"></p>
+    </section>
+
+    <section class="panneau" id="panneau-projection" hidden>
+      <h2>Projection — <span id="nom-assure"></span></h2>
+      <label for="age-retraite">Âge de retraite</label>
+      <input id="age-retraite" type="number" min="58" max="70" value="65">
+
+      <div class="resume">
+        <div><span class="etiquette">Avoir à la retraite</span><strong id="avoir-final">—</strong></div>
+        <div><span class="etiquette">Rente annuelle</span><strong id="rente-annuelle">—</strong></div>
+        <div><span class="etiquette">Rente mensuelle</span><strong id="rente-mensuelle">—</strong></div>
+      </div>
+
+      <div id="graphique"></div>
+
+      <details>
+        <summary>Détail année par année</summary>
+        <table id="tableau-projection">
+          <thead>
+            <tr>
+              <th>Année</th><th class="num">Âge</th><th class="num">Avoir initial</th>
+              <th class="num">Bonification</th><th class="num">Intérêt</th><th class="num">Avoir final</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>Les paramètres LPP proviennent de la table <code>parametre_lpp</code> et doivent être
+       vérifiés chaque année civile auprès de l'OFAS.</p>
+  </footer>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>

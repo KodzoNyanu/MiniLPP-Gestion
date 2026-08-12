@@ -1,0 +1,23 @@
+services:
+  mariadb:
+    image: mariadb:11
+    container_name: minilpp-db
+    restart: unless-stopped
+    ports:
+      - "3307:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_DATABASE: minilpp
+      MARIADB_USER: minilpp
+      MARIADB_PASSWORD: minilpp
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d:ro
+      - minilpp-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  minilpp-data:

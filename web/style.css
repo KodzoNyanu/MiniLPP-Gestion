@@ -1,0 +1,91 @@
+:root {
+  --fond: #f7f7f5;
+  --carte: #ffffff;
+  --texte: #1d1d1b;
+  --discret: #6b6b66;
+  --accent: #1f5f4f;
+  --bordure: #e2e2dd;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--fond);
+  color: var(--texte);
+  line-height: 1.5;
+}
+
+header {
+  padding: 1.5rem 2rem 1rem;
+  border-bottom: 1px solid var(--bordure);
+  background: var(--carte);
+}
+
+h1 { margin: 0; font-size: 1.4rem; letter-spacing: -0.01em; }
+.sous-titre { margin: 0.25rem 0 0; color: var(--discret); font-size: 0.9rem; }
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem 3rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.panneau {
+  background: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+h2 { margin: 0 0 1rem; font-size: 1.05rem; }
+
+label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--discret);
+  margin-bottom: 0.25rem;
+}
+
+input {
+  font: inherit;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--bordure);
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  min-width: 14rem;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--bordure); }
+th { font-weight: 600; color: var(--discret); cursor: pointer; user-select: none; white-space: nowrap; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: #f0f4f2; }
+tbody tr.selection { background: #e4ede9; }
+
+.etat { color: var(--discret); font-size: 0.85rem; min-height: 1.2em; }
+
+.resume {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 0.5rem 0 1.25rem;
+}
+.resume .etiquette { display: block; font-size: 0.75rem; color: var(--discret); }
+.resume strong { font-size: 1.3rem; font-variant-numeric: tabular-nums; color: var(--accent); }
+
+#graphique svg { width: 100%; height: auto; }
+
+details { margin-top: 1rem; }
+summary { cursor: pointer; font-size: 0.9rem; color: var(--accent); }
+
+footer {
+  border-top: 1px solid var(--bordure);
+  padding: 1rem 2rem 2rem;
+  font-size: 0.8rem;
+  color: var(--discret);
+}

@@ -1,0 +1,9 @@
+# Fins de ligne : LF partout dans le dépôt.
+# Sans cette règle, un script Bash committé depuis Windows arrive en CRLF sous
+# Linux et échoue avec « bad interpreter: /bin/bash^M ».
+* text=auto eol=lf
+
+# Sauf les scripts propres à Windows, que PowerShell attend en CRLF.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
