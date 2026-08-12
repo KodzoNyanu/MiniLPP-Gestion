@@ -35,8 +35,8 @@ import java.util.Optional;
  *   GET /                    -> web/index.html
  * </pre>
  *
- * <p>Exercice E3.1 : migrer vers Spring Boot ou Javalin. Ici, l'intérêt est de
- * voir ce qu'un framework fait à ta place.</p>
+ * <p>TODO : migrer vers Spring Boot ou Javalin. Le serveur du JDK a l'avantage
+ * de rendre visible ce qu'un framework ferait à notre place.</p>
  */
 public class Api {
 

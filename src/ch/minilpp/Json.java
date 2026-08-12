@@ -6,8 +6,8 @@ import java.math.BigDecimal;
  * Écriture JSON minimale, sans dépendance externe, pour que le projet démarre
  * avec un simple JDK.
  *
- * <p>Exercice E3.1 : remplacer par Jackson une fois Maven en place. Écrire son
- * propre sérialiseur JSON est une bonne façon de comprendre l'échappement, une
+ * <p>TODO : remplacer par Jackson une fois Maven en place. Écrire son propre
+ * sérialiseur JSON est une bonne façon de comprendre l'échappement, une
  * mauvaise façon de faire du code de production.</p>
  */
 public final class Json {

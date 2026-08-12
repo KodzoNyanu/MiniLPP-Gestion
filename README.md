@@ -1,4 +1,4 @@
-# MiniLPP — projet fil rouge
+# MiniLPP
 
 Mini-application de gestion de caisse de pension : **Java + MariaDB + HTML/JavaScript**, sans framework.
 

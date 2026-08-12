@@ -12,7 +12,8 @@ import java.util.regex.Pattern;
  * partager entre threads et rendent impossible la modification accidentelle
  * d'un dossier au milieu d'un calcul.</p>
  *
- * <p>Exercice E2.1 : durcir la validation du numéro AVS (clé de contrôle EAN-13).</p>
+ * <p>TODO : durcir la validation du numéro AVS en vérifiant la clé de contrôle
+ * EAN-13, et pas seulement le format.</p>
  */
 public record Assure(
         long id,

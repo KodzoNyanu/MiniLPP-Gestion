@@ -5,10 +5,11 @@ import java.math.BigDecimal;
 /**
  * Barème légal minimal des bonifications de vieillesse, par tranche d'âge.
  *
- * <p>Il est ici en dur pour que le calcul soit testable sans base de données.
- * Exercice E3.4 : le remplacer par une {@code Strategy} alimentée depuis la
- * table {@code bareme_bonification}, afin de supporter un plan surobligatoire
- * propre à une caisse cliente sans toucher au service.</p>
+ * <p>Il est ici en dur pour que le calcul soit testable sans base de données.</p>
+ *
+ * <p>TODO : le remplacer par une {@code Strategy} alimentée depuis la table
+ * {@code bareme_bonification}, afin de supporter un plan surobligatoire propre
+ * à une caisse cliente sans toucher au service.</p>
  */
 public enum BaremeBonification {
 

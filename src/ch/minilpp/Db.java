@@ -7,9 +7,10 @@ import java.sql.SQLException;
 /**
  * Accès à la base MariaDB.
  *
- * <p>Volontairement minimal pour le premier jour : une fabrique de connexions.
- * Exercice E3.1 — remplacer par un {@code DataSource} HikariCP injecté dans les
- * DAO, au lieu d'un accès statique. C'est le « D » de SOLID.</p>
+ * <p>Volontairement minimal : une fabrique de connexions.</p>
+ *
+ * <p>TODO : remplacer par un {@code DataSource} HikariCP injecté dans les DAO,
+ * au lieu d'un accès statique. C'est le « D » de SOLID.</p>
  */
 public final class Db {
 

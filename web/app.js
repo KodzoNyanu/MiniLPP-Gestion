@@ -94,7 +94,8 @@ async function chargerProjection(id, ageRetraite) {
   dessinerGraphique(p.lignes);
 }
 
-// Graphique SVG écrit à la main : exercice E5.3, aucune librairie.
+// Graphique SVG écrit à la main, sans librairie de visualisation.
+// TODO : ajouter une infobulle au survol (année et montant).
 function dessinerGraphique(lignes) {
   const largeur = 800, hauteur = 260, marge = { h: 55, b: 28, t: 10, d: 10 };
   const max = Math.max(...lignes.map((l) => Number(l.avoirFinal)), 1);

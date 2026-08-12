@@ -12,9 +12,10 @@ import java.util.List;
 /**
  * Tests sans dépendance : un {@code main}, des assertions maison.
  *
- * <p>C'est volontairement primitif — l'exercice E3.1 consiste à remplacer tout
- * ce fichier par du JUnit 5 une fois Maven en place. Mais un test primitif qui
- * tourne le premier jour vaut mieux qu'un test parfait la semaine prochaine.</p>
+ * <p>C'est volontairement primitif : aucune dépendance n'est nécessaire pour
+ * lancer la suite, un JDK suffit.</p>
+ *
+ * <p>TODO : remplacer tout ce fichier par du JUnit 5 une fois Maven en place.</p>
  */
 public class Tests {
 
