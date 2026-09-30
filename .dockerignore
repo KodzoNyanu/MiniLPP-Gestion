@@ -1,0 +1,9 @@
+.git
+out
+lib
+test
+sql
+*.md
+run.sh
+run.ps1
+docker-compose.yml
