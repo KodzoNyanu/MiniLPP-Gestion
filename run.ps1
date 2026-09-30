@@ -20,9 +20,9 @@ Set-Location $PSScriptRoot
 # Pour que les accents écrits par Java s'affichent correctement dans la console.
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$driverVersion = '3.5.10'
-$driverJar = "lib/mariadb-java-client-$driverVersion.jar"
-$driverUrl = "https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/$driverVersion/mariadb-java-client-$driverVersion.jar"
+$driverVersion = '42.7.13'
+$driverJar = "lib/postgresql-$driverVersion.jar"
+$driverUrl = "https://repo1.maven.org/maven2/org/postgresql/postgresql/$driverVersion/postgresql-$driverVersion.jar"
 $port = if ($env:MINILPP_PORT) { $env:MINILPP_PORT } else { '8080' }
 
 # Les arguments -D doivent être passés entre guillemets : PowerShell 5.1 découpe
@@ -32,7 +32,7 @@ $encodage = '-Dfile.encoding=UTF-8'
 
 # 1. Pilote JDBC ------------------------------------------------------------
 if (-not (Test-Path $driverJar)) {
-    Write-Host "Téléchargement du pilote JDBC MariaDB $driverVersion (~700 Ko) depuis Maven Central..."
+    Write-Host "Téléchargement du pilote JDBC PostgreSQL $driverVersion depuis Maven Central..."
     New-Item -ItemType Directory -Force -Path lib | Out-Null
     $ancienneProgression = $ProgressPreference
     $ProgressPreference = 'SilentlyContinue'   # accélère nettement Invoke-WebRequest
@@ -55,7 +55,7 @@ if ($TestsOnly) { return }
 
 # 4. Base de données --------------------------------------------------------
 if (-not $SkipDb) {
-    Write-Host "`nDémarrage de MariaDB (Docker)..."
+    Write-Host "`nDémarrage de PostgreSQL (Docker)..."
     & docker compose up -d
     if ($LASTEXITCODE -ne 0) { throw "Docker n'a pas pu démarrer la base" }
 

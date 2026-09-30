@@ -1,6 +1,6 @@
 # MiniLPP
 
-Mini-application de gestion de caisse de pension : **Java + MariaDB + HTML/JavaScript**, sans framework.
+Mini-application de gestion de caisse de pension : **Java + PostgreSQL + HTML/JavaScript**, sans framework.
 
 Elle couvre le cœur métier de la prévoyance professionnelle : détermination du salaire coordonné, bonifications de vieillesse par tranche d'âge, projection de l'avoir jusqu'à la retraite et calcul de la rente au taux de conversion. Les paramètres légaux sont stockés par année civile, jamais codés en dur.
 
@@ -22,7 +22,7 @@ powershell -ExecutionPolicy Bypass -File run.ps1
 chmod +x run.sh && ./run.sh
 ```
 
-Le script télécharge le pilote JDBC MariaDB (~700 Ko depuis Maven Central), compile, lance les tests, démarre MariaDB dans Docker sur le port **3307**, puis l'API sur **http://localhost:8080**.
+Le script télécharge le pilote JDBC PostgreSQL depuis Maven Central, compile, lance les tests, démarre PostgreSQL dans Docker sur le port **5432**, puis l'API sur **http://localhost:8080**.
 
 Pour lancer uniquement les tests, sans Docker ni base :
 
@@ -42,7 +42,7 @@ $env:MINILPP_PORT=8099; powershell -ExecutionPolicy Bypass -File run.ps1 -SkipDb
 
 ```
 minilpp/
-├── docker-compose.yml            MariaDB 11 sur le port 3307
+├── docker-compose.yml            PostgreSQL 16 sur le port 5432
 ├── sql/01_schema.sql             assuré, avoir de vieillesse, paramètres légaux, prestations
 ├── sql/02_seed.sql               6 assurés de démonstration + paramètres 2025/2026
 ├── src/ch/minilpp/
@@ -71,7 +71,7 @@ curl "http://localhost:8080/api/assures/1/projection?ageRetraite=65"
 ## Base de données
 
 ```bash
-docker exec -it minilpp-db mariadb -u minilpp -pminilpp minilpp
+docker exec -it minilpp-db psql -U minilpp -d minilpp
 ```
 
 Le schéma et les données sont rejoués automatiquement à la **première** création du volume. Pour repartir de zéro :

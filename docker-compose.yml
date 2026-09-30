@@ -1,20 +1,19 @@
 services:
-  mariadb:
-    image: mariadb:11
+  postgres:
+    image: postgres:16
     container_name: minilpp-db
     restart: unless-stopped
     ports:
-      - "3307:3306"
+      - "5432:5432"
     environment:
-      MARIADB_ROOT_PASSWORD: root
-      MARIADB_DATABASE: minilpp
-      MARIADB_USER: minilpp
-      MARIADB_PASSWORD: minilpp
+      POSTGRES_DB: minilpp
+      POSTGRES_USER: minilpp
+      POSTGRES_PASSWORD: minilpp
     volumes:
       - ./sql:/docker-entrypoint-initdb.d:ro
-      - minilpp-data:/var/lib/mysql
+      - minilpp-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      test: ["CMD-SHELL", "pg_isready -U minilpp -d minilpp"]
       interval: 5s
       timeout: 5s
       retries: 20
