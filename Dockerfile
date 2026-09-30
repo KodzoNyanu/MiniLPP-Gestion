@@ -1,16 +1,16 @@
 # MiniLPP - image pour Cloud Run (ou tout hébergeur de conteneurs).
 # Compilation avec javac (pas de Maven/Gradle dans ce projet), puis exécution
-# avec le pilote JDBC MariaDB déjà utilisé par run.sh/run.ps1 en local.
+# avec le pilote JDBC PostgreSQL déjà utilisé par run.sh/run.ps1 en local.
 
 FROM eclipse-temurin:17-jdk AS build
 WORKDIR /app
 
-ARG PILOTE_VERSION=3.5.10
-ENV PILOTE=lib/mariadb-java-client.jar
+ARG PILOTE_VERSION=42.7.13
+ENV PILOTE=lib/postgresql-jdbc.jar
 COPY src ./src
 
 RUN mkdir -p lib out \
-    && curl -fsSL "https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/${PILOTE_VERSION}/mariadb-java-client-${PILOTE_VERSION}.jar" \
+    && curl -fsSL "https://repo1.maven.org/maven2/org/postgresql/postgresql/${PILOTE_VERSION}/postgresql-${PILOTE_VERSION}.jar" \
        -o "$PILOTE" \
     && javac -encoding UTF-8 -d out $(find src -name '*.java')
 
@@ -25,4 +25,4 @@ COPY web ./web
 ENV MINILPP_PORT=8080
 EXPOSE 8080
 
-CMD ["java", "-Dfile.encoding=UTF-8", "-cp", "out:lib/mariadb-java-client.jar", "ch.minilpp.Api"]
+CMD ["java", "-Dfile.encoding=UTF-8", "-cp", "out:lib/postgresql-jdbc.jar", "ch.minilpp.Api"]

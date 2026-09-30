@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Accès à la base MariaDB.
+ * Accès à la base PostgreSQL.
  *
  * <p>Volontairement minimal : une fabrique de connexions.</p>
  *
@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public final class Db {
 
     private static final String URL =
-            env("MINILPP_DB_URL", "jdbc:mariadb://127.0.0.1:3307/minilpp");
+            env("MINILPP_DB_URL", "jdbc:postgresql://127.0.0.1:5432/minilpp");
     private static final String USER = env("MINILPP_DB_USER", "minilpp");
     private static final String PASSWORD = env("MINILPP_DB_PASSWORD", "minilpp");
 

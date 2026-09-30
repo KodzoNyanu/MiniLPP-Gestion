@@ -10,12 +10,12 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-VERSION_PILOTE="3.5.10"
-PILOTE="lib/mariadb-java-client-${VERSION_PILOTE}.jar"
-URL_PILOTE="https://repo1.maven.org/maven2/org/mariadb/jdbc/mariadb-java-client/${VERSION_PILOTE}/mariadb-java-client-${VERSION_PILOTE}.jar"
+VERSION_PILOTE="42.7.13"
+PILOTE="lib/postgresql-${VERSION_PILOTE}.jar"
+URL_PILOTE="https://repo1.maven.org/maven2/org/postgresql/postgresql/${VERSION_PILOTE}/postgresql-${VERSION_PILOTE}.jar"
 
 if [[ ! -f "$PILOTE" ]]; then
-  echo "Téléchargement du pilote JDBC MariaDB ${VERSION_PILOTE} (~700 Ko) depuis Maven Central..."
+  echo "Téléchargement du pilote JDBC PostgreSQL ${VERSION_PILOTE} depuis Maven Central..."
   mkdir -p lib
   curl -fsSL "$URL_PILOTE" -o "$PILOTE"
 fi
@@ -33,7 +33,7 @@ if [[ "${1:-}" == "tests" ]]; then
 fi
 
 echo
-echo "Démarrage de MariaDB (Docker)..."
+echo "Démarrage de PostgreSQL (Docker)..."
 docker compose up -d
 
 echo "Attente de la disponibilité de la base..."
