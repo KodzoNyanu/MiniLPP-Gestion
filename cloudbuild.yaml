@@ -1,0 +1,26 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'europe-west6-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/minilpp-api'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'europe-west6-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/minilpp-api'
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'minilpp-api'
+      - '--image=europe-west6-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/minilpp-api'
+      - '--region=europe-west6'
+      - '--platform=managed'
+
+images:
+  - 'europe-west6-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/minilpp-api'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
